@@ -1,0 +1,29 @@
+{
+    "name": "abbychau/fsdb",
+    "description": "FSDB V1",
+    "keywords": ["database","arrayaccess", "composer", "package"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abby Chau",
+            "email": "i@abby.md"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=7.3"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "^9.5",
+        "friendsofphp/php-cs-fixer": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "abbychau\\mydb\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/php-cs-fixer fix src"
+    }
+}
