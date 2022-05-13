@@ -11,4 +11,3 @@ class DBTest extends TestCase
     unset($var);
   }
 }
-
