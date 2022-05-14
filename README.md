@@ -53,9 +53,16 @@ Winning hackathons can never be easier.
 
 ## Usage
 
-[Example](example.php)
+- [Example](example.php)
+- [Tests](tests/DBTest.php)
 
 ## Precautions
 
 - `current()` of `\Iterator` will lead to iteration of a directory
 - There may induce a lot of files in the database directory (may use an VFS to solve this problem?)
+
+## Readiness
+
+!!! IMPORTANT !!! 
+
+NOT READY YET!

@@ -117,6 +117,18 @@ class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
 
   public function offsetSet($offset, $value): void
   {
+    if(is_null($offset)) {
+      // nanotime
+      $x = microtime(true);
+      while(true){
+        if(!$this->offsetExists($x)) {
+          break;
+        }
+        $x++;
+      }
+      $this->setValue($x, $value);
+      return;
+    }
     if ($this->offsetExists($offset)) {
       $this->offsetUnset($offset);
     }
@@ -177,6 +189,7 @@ class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
     foreach ($files as $file) {
       (is_dir("$path/$file")) ? $this->removePath("$path/$file") : unlink("$path/$file");
     }
+    rmdir($path);
   }
 
   public function reset()
