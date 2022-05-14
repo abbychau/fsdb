@@ -1,6 +1,6 @@
 <?php
 
-namespace abbychau\mydb;
+namespace abbychau\fsdb;
 
 class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
 {

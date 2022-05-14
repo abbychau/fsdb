@@ -6,7 +6,7 @@ class DBTest extends TestCase
 {
   public function testFileSystemJsonResult()
   {
-    $fs = new abbychau\mydb\FileSystem("test");
+    $fs = new abbychau\fsdb\FileSystem("test");
     $fs->reset();
     //exit;
     $fs['1']="1";

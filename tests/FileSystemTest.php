@@ -6,7 +6,7 @@ class FileSystemTest extends TestCase
 {
   public function testIsThereAnySyntaxError()
   {
-    $var = new abbychau\mydb\FileSystem("test");
+    $var = new abbychau\fsdb\FileSystem("test");
     $this->assertTrue(is_object($var));
     unset($var);
   }
