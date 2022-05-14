@@ -6,7 +6,7 @@ include("src/FileSystem.php");
 
 $db = new FileSystem("test");
 $db->reset();
-//exit;
+mkdir("test");
 $db['1'] = "1";
 $db['2'] = ['testing' => '3'];
 $db['2'] = [3, 2, 1, 4];
