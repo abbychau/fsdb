@@ -7,6 +7,37 @@ class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
   private $dir = "";
   private $position = 0;
   private $dirCache = [];
+
+  public function __get($name)
+  {
+    return $this->offsetGet($name);
+  }
+  public function __set($name, $value)
+  {
+    $this->offsetSet($name, $value);
+  }
+  public function __isset($name)
+  {
+    return $this->offsetExists($name);
+  }
+  public function __unset($name)
+  {
+    $this->offsetUnset($name);
+  }
+  public function __serialize(): array
+  {
+    $data['dir'] = $this->dir;
+    return $data;
+  }
+  public function __unserialize(array $data): void
+  {
+    $this->__construct($data['dir']);
+  }
+  public function __toString()
+  {
+    return json_encode($this->traverseDirectoryToArray($this->dir));
+  }
+  
   public function current()
   {
     return $this->offsetGet($this->dirCache[$this->position]);
@@ -109,8 +140,7 @@ class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
 
   public function jsonSerialize()
   {
-    $result = $this->traverseDirectoryToArray($this->dir);
-    return $result;
+    return $this->traverseDirectoryToArray($this->dir);
   }
 
   private function traverseDirectoryToArray($dir)

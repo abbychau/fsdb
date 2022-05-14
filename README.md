@@ -3,15 +3,23 @@
 The ultimate prototyping database on top of the filesystem.
 
 ## Introduction
-I was always thinking what is the best way to implement a backend, especially a RESTful one.
+I am always thinking what is the best way to implement a backend, especially a RESTful one.
 
 Obviously, PHP is the best choice to me, just because of its Associative Array and interaction with json_encode/json_decode, but nothing else.
 
 Usually, I was doing in this way:
 
 ```php
-//TODO: put code here
-
+//WRITE STATES
+register_shutdown_function(function () {
+    global $LOCK_FILE;
+    foreach (STATES as $v) {
+        global $$v;
+        $gstate[$v] = $$v;
+    }
+    file_put_contents($STATE_FILE, marshall($var), LOCK_EX);
+    FileLocker::unlockFile($LOCK_FILE);
+});
 ```
 
 However, this is not the best way to do it, becasuse serialization + unserialization for each request is very slow.
@@ -41,7 +49,7 @@ echo $db['2'][3];
 
 FSDB implemented `\ArrayAccess`, `\JsonSerializable`, `\Iterator` and store the great assoc array in files in synchronous manner.
 
-Hackathons can never be easier.
+Winning hackathons can never be easier.
 
 ## Usage
 
