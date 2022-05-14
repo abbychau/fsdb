@@ -2,51 +2,6 @@
 
 namespace abbychau\mydb;
 
-class FsArray implements \Iterator
-{
-  private $array;
-  private $position = 0;
-  public function __construct($name)
-  {
-    $this->array = new FileSystem($name);
-    $this->position=0;
-  }
-  public function rewind(): void
-  {
-    var_dump(__METHOD__);
-    $this->position = 0;
-  }
-
-  public function current()
-  {
-    var_dump(__METHOD__);
-    return $this->array[$this->position];
-  }
-
-  public function key()
-  {
-    var_dump(__METHOD__);
-    return $this->position;
-  }
-
-  public function next(): void
-  {
-    var_dump(__METHOD__);
-    ++$this->position;
-  }
-
-  public function valid(): bool
-  {
-    var_dump(__METHOD__);
-    return isset($this->array[$this->position]);
-  }
-
-  public function reset()
-  {
-    $this->array->reset();
-  }
-}
-
 class FileSystem implements \ArrayAccess, \JsonSerializable, \Iterator
 {
   private $dir = "";
