@@ -2,10 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-class DBTest extends TestCase
-{
-  public function testFileSystemJsonResult()
-  {
+class DBTest extends TestCase {
+  public function testFileSystemJsonResult() {
     $fs = new abbychau\fsdb\FileSystem("test");
     $fs->reset();
     //exit;
